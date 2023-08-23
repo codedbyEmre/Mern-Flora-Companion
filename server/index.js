@@ -1,14 +1,13 @@
 // imports
 require('dotenv').config();
 const express = require('express');
+const floraRoutes = require('./routes/floraRoutes');
 
 // create express app
 const app = express();
 
 // routes
-app.get('/', (req, res) => {
-  res.json({ mssg: 'Welcome to the app!' });
-});
+app.use('/api/floras', floraRoutes);
 
 // listen for requests
 app.listen(process.env.PORT, () => {
