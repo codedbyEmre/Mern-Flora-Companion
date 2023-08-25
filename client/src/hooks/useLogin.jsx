@@ -1,6 +1,8 @@
 // imports
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
@@ -29,10 +31,14 @@ export const useLogin = () => {
       setIsLoading(false);
 
       setError(null);
+
+      toast.success('Logged in successfully!');
     } else {
       setIsLoading(false);
 
       setError(data.error);
+
+      toast.error('Something went wrong!');
     }
   };
 

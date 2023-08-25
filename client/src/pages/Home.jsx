@@ -33,12 +33,12 @@ const Home = () => {
 
       {floras ? (
         <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
-          {floras.map(flora => (
-            <Flora key={flora._id} flora={flora} />
+          {floras.map((flora, index) => (
+            <Flora key={flora._id} flora={flora} index={index} />
           ))}
         </div>
       ) : (
-        <Loading size={60} />
+        <Loading size={50} />
       )}
 
       {/* If there is no flora  */}

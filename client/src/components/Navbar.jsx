@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -9,31 +11,37 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await logout();
+
+    toast.success('Logged out successfully!');
   };
 
   return (
-    <header className="bg-slate-600">
-      <div className="max-w-6xl mx-auto p-5 flex items-center justify-between">
-        <Link to="/">
-          <div className="text-3xl text-white font-medium">Flora Companion</div>
-        </Link>
-        <nav className="flex items-center gap-4 text-white text-lg">
-          {user ? (
-            <>
-              <div>
-                User: <span className="font-semibold">{user?.user.username}</span>
+    <>
+      <ToastContainer position="top-right" />
+
+      <header className="bg-slate-600">
+        <div className="max-w-6xl mx-auto p-5 flex sm:flex-row flex-col items-center justify-between">
+          <Link to="/">
+            <div className="text-3xl text-white font-medium">Flora Companion</div>
+          </Link>
+          <nav className="flex items-center gap-4 text-white text-lg sm:mt-0 mt-4">
+            {user ? (
+              <>
+                <div>
+                  User: <span className="font-semibold">{user?.user.username}</span>
+                </div>
+                <button onClick={handleLogout}>Logout</button>
+              </>
+            ) : (
+              <div className="flex items-center gap-4">
+                <Link to="/signup">Signup</Link>
+                <Link to="/login">Login</Link>
               </div>
-              <button onClick={handleLogout}>Logout</button>
-            </>
-          ) : (
-            <div className="flex items-center gap-4">
-              <Link to="/signup">Signup</Link>
-              <Link to="/login">Login</Link>
-            </div>
-          )}
-        </nav>
-      </div>
-    </header>
+            )}
+          </nav>
+        </div>
+      </header>
+    </>
   );
 };
 

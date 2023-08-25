@@ -5,7 +5,7 @@ import DeleteModal from './modals/DeleteModal';
 import EditModal from './modals/EditModal';
 import { Link } from 'react-router-dom';
 
-const Flora = ({ flora }) => {
+const Flora = ({ flora, index }) => {
   const { _id, commonName, family, color, area, createdAt } = flora;
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);

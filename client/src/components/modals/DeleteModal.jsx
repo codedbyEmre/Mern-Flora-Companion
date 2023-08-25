@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { useFloraContext } from '../../hooks/useFloraContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DeleteModal = ({ id, closeModal }) => {
   const { dispatch } = useFloraContext();
@@ -19,6 +21,8 @@ const DeleteModal = ({ id, closeModal }) => {
 
     if (res.ok) {
       dispatch({ type: 'DELETE_FLORA', payload: data });
+
+      toast.success('Flora deleted successfully!');
     }
   };
 
@@ -32,20 +36,24 @@ const DeleteModal = ({ id, closeModal }) => {
   }
 
   return (
-    <dialog id="my_modal_1" className="modal" open>
-      <form method="dialog" className="modal-box">
-        <h3 className="font-bold text-2xl">Delete Flora</h3>
-        <p className="py-4 text-lg">Are you sure you want to delete this flora?</p>
-        <div className="modal-action">
-          <button className="btn btn-outline mr-2" onClick={handleCloseModal}>
-            Close
-          </button>
-          <button onClick={() => deleteFlora()} className="btn btn-neutral">
-            Delete
-          </button>
-        </div>
-      </form>
-    </dialog>
+    <>
+      <ToastContainer position="top-right" />
+
+      <dialog id="my_modal_1" className="modal" open>
+        <form method="dialog" className="modal-box">
+          <h3 className="font-bold text-2xl">Delete Flora</h3>
+          <p className="py-4 text-lg">Are you sure you want to delete this flora?</p>
+          <div className="modal-action">
+            <button className="btn btn-outline mr-2" onClick={handleCloseModal}>
+              Close
+            </button>
+            <button onClick={() => deleteFlora()} className="btn btn-neutral">
+              Delete
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </>
   );
 };
 
