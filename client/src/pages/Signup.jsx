@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSignup } from '../hooks/useSignup';
 
 const Signup = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signup, isLoading, error } = useSignup();
@@ -10,7 +11,7 @@ const Signup = () => {
   const handleSignup = async e => {
     e.preventDefault();
 
-    await signup(email, password);
+    await signup(username, email, password);
   };
 
   return (
@@ -18,8 +19,21 @@ const Signup = () => {
       <h3 className="mb-8 text-2xl font-medium text-center mt-2">Sign Up</h3>
 
       <div className="mb-6">
+        <label className="block mb-1" htmlFor="username">
+          * Username
+        </label>
+        <input
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          className="w-full border border-slate-400 p-1 rounded"
+          type="text"
+          id="username"
+        />
+      </div>
+
+      <div className="mb-6">
         <label className="block mb-1" htmlFor="email">
-          Email
+          * Email
         </label>
         <input
           value={email}
@@ -31,7 +45,7 @@ const Signup = () => {
       </div>
 
       <label className="block mb-1" htmlFor="password">
-        Password
+        * Password
       </label>
       <input
         value={password}

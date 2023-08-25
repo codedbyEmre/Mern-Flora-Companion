@@ -20,7 +20,9 @@ const Navbar = () => {
         <nav className="flex items-center gap-4 text-white text-lg">
           {user ? (
             <>
-              <div>{user.email}</div>
+              <div>
+                User: <span className="font-semibold">{user?.user.username}</span>
+              </div>
               <button onClick={handleLogout}>Logout</button>
             </>
           ) : (
