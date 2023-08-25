@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const floraRoutes = require('./routes/floraRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // create express app
 const app = express();
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/floras', floraRoutes);
+app.use('/api/user', userRoutes);
 
 // connect to db
 mongoose
