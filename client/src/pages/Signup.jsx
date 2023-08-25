@@ -1,6 +1,16 @@
+// imports
+import { useState } from 'react';
+import { useSignup } from '../hooks/useSignup';
+
 const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { signup, isLoading, error } = useSignup();
+
   const handleSignup = async e => {
     e.preventDefault();
+
+    await signup(email, password);
   };
 
   return (
@@ -11,16 +21,32 @@ const Signup = () => {
         <label className="block mb-1" htmlFor="email">
           Email
         </label>
-        <input className="w-full border border-slate-400 p-1 rounded" type="email" id="email" />
+        <input
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          className="w-full border border-slate-400 p-1 rounded"
+          type="email"
+          id="email"
+        />
       </div>
 
       <label className="block mb-1" htmlFor="password">
         Password
       </label>
-      <input className="w-full border border-slate-400 p-1 rounded" type="password" id="password" />
+      <input
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        className="w-full border border-slate-400 p-1 rounded"
+        type="password"
+        id="password"
+      />
+
+      {error && <div className="text-red-600 mt-6 -mb-2">{error}</div>}
 
       <div className="flex justify-end mt-8 mb-2">
-        <button className="btn btn-neutral">Signup</button>
+        <button disabled={isLoading} className="btn btn-neutral">
+          Signup
+        </button>
       </div>
     </form>
   );
