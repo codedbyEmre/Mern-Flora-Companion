@@ -40,6 +40,9 @@ const Home = () => {
       ) : (
         <Loading size={60} />
       )}
+
+      {/* If there is no flora  */}
+      {floras && !floras.length ? <div className="text-slate-700 text-2xl text-center mt-4">No floras found!</div> : ''}
     </>
   );
 };
