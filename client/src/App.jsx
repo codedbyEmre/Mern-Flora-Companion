@@ -1,8 +1,12 @@
 // imports
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// components & pages
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import FloraDetails from './components/FloraDetails';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -13,6 +17,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/details/:id" element={<FloraDetails />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </BrowserRouter>
