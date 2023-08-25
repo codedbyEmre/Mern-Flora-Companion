@@ -1,6 +1,7 @@
 // imports
 import { useState } from 'react';
 import { useFloraContext } from '../../hooks/useFloraContext';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const EditModal = ({ id, closeModal, flora }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -16,6 +17,7 @@ const EditModal = ({ id, closeModal, flora }) => {
   const [editedBloomTime, setEditedBloomTime] = useState(bloomTime);
   const [editedArea, setEditedArea] = useState(area);
   const { dispatch } = useFloraContext();
+  const { user } = useAuthContext();
 
   const editFlora = async e => {
     e.preventDefault();
@@ -35,7 +37,8 @@ const EditModal = ({ id, closeModal, flora }) => {
         area: editedArea
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`
       }
     });
 

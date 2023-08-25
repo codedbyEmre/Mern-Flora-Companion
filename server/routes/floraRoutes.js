@@ -1,8 +1,11 @@
 // imports
 const express = require('express');
 const { getFloras, getFlora, createFlora, updateFlora, deleteFlora } = require('../controllers/floraControllers');
+const requireAuth = require('../middlewares/requireAuth');
 
 const router = express.Router();
+
+router.use(requireAuth);
 
 // GET all floras
 router.get('/', getFloras);

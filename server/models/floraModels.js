@@ -42,6 +42,10 @@ const floraSchema = new mongoose.Schema(
     area: {
       type: String,
       required: true
+    },
+    user_id: {
+      type: String,
+      required: true
     }
   },
   {

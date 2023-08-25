@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 
 // get all floras
 const getFloras = async (req, res) => {
+  const user_id = req.user._id;
+
   try {
-    const floras = await Flora.find({}).sort({ createdAt: -1 });
+    const floras = await Flora.find({ user_id }).sort({ createdAt: -1 });
     res.status(200).json(floras);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -36,6 +38,9 @@ const getFlora = async (req, res) => {
 // create a flora
 const createFlora = async (req, res) => {
   try {
+    const user_id = req.user._id;
+    req.body.user_id = user_id;
+
     const flora = await Flora.create(req.body);
     res.status(200).json(flora);
   } catch (error) {

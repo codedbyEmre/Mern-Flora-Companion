@@ -4,13 +4,19 @@ import Flora from '../components/Flora';
 import AddFlora from '../components/AddFlora';
 import { useFloraContext } from '../hooks/useFloraContext';
 import Loading from '../components/Loading';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Home = () => {
   const { floras, dispatch } = useFloraContext();
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const getFloras = async () => {
-      const res = await fetch('http://localhost:3000/api/floras');
+      const res = await fetch('http://localhost:3000/api/floras', {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      });
       const data = await res.json();
 
       if (res.ok) {

@@ -1,6 +1,7 @@
 // imports
 import { useState } from 'react';
 import { useFloraContext } from '../hooks/useFloraContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const AddFlora = () => {
   const [commonName, setCommonName] = useState('');
@@ -15,6 +16,7 @@ const AddFlora = () => {
   const [area, setArea] = useState('');
   const [error, setError] = useState(null);
   const { dispatch } = useFloraContext();
+  const { user } = useAuthContext();
 
   const handleAddFlora = async e => {
     e.preventDefault();
@@ -36,7 +38,8 @@ const AddFlora = () => {
         area
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`
       }
     });
     const data = await res.json();

@@ -19,7 +19,10 @@ const Navbar = () => {
         </Link>
         <nav className="flex items-center gap-4 text-white text-lg">
           {user ? (
-            <button onClick={handleLogout}>Logout</button>
+            <>
+              <div>{user.email}</div>
+              <button onClick={handleLogout}>Logout</button>
+            </>
           ) : (
             <div className="flex items-center gap-4">
               <Link to="/signup">Signup</Link>

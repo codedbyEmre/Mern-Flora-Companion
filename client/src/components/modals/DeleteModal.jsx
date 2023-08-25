@@ -1,14 +1,19 @@
 // imports
 import { useState } from 'react';
 import { useFloraContext } from '../../hooks/useFloraContext';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const DeleteModal = ({ id, closeModal }) => {
   const { dispatch } = useFloraContext();
   const [isModalOpen, setIsModalOpen] = useState(true);
+  const { user } = useAuthContext();
 
   const deleteFlora = async () => {
     const res = await fetch(`http://localhost:3000/api/floras/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
     });
     const data = await res.json();
 

@@ -3,13 +3,20 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
 import Loading from './Loading';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const FloraDetails = () => {
   const { id } = useParams();
   const [flora, setFlora] = useState(null);
+  const { user } = useAuthContext();
+
   useEffect(() => {
     const getFlora = async () => {
-      const res = await fetch(`http://localhost:3000/api/floras/${id}`);
+      const res = await fetch(`http://localhost:3000/api/floras/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user?.token}`
+        }
+      });
       const data = await res.json();
 
       if (res.ok) {
