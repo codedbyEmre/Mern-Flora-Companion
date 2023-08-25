@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const floraRoutes = require('./routes/floraRoutes');
 
 // create express app
@@ -9,6 +10,7 @@ const app = express();
 
 // middlewares
 app.use(express.json());
+app.use(cors());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();

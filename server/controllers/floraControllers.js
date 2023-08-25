@@ -58,7 +58,9 @@ const updateFlora = async (req, res) => {
       return res.status(404).json({ error: 'There is no such flora!' });
     }
 
-    res.status(200).json(flora);
+    const editedFlora = await Flora.findById(id);
+
+    res.status(200).json(editedFlora);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
