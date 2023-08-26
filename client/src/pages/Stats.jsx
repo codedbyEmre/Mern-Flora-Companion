@@ -1,4 +1,5 @@
 // imports
+import Back from '../components/shared/Back';
 import { useFloraContext } from '../hooks/useFloraContext';
 
 const Stats = () => {
@@ -39,7 +40,10 @@ const Stats = () => {
   };
 
   return (
-    <div>
+    <>
+      {/* Go back to where you came from */}
+      <Back />
+
       <ul className="bg-white py-4 px-6 rounded-md shadow-md">
         <p className="text-2xl font-semibold mb-4">Statistics</p>
         <li className="mb-2 text-lg">
@@ -130,7 +134,7 @@ const Stats = () => {
           </span>
         </li>
       </ul>
-    </div>
+    </>
   );
 };
 

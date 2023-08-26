@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Flora from '../components/Flora';
 import AddFlora from '../components/AddFlora';
 import { useFloraContext } from '../hooks/useFloraContext';
-import Loading from '../components/Loading';
+import Loading from '../components/shared/Loading';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const Home = () => {

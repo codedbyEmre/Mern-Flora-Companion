@@ -10,6 +10,7 @@ export const useLogout = () => {
     localStorage.removeItem('user');
 
     dispatch({ type: 'LOGOUT' });
+
     florasDispatch({ type: 'LIST_FLORAS', payload: null });
   };
 

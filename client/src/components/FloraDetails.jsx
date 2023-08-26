@@ -2,15 +2,14 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
-import Loading from './Loading';
+import Loading from './shared/Loading';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useNavigate } from 'react-router-dom';
+import Back from './shared/Back';
 
 const FloraDetails = () => {
   const { id } = useParams();
   const [flora, setFlora] = useState(null);
   const { user } = useAuthContext();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getFlora = async () => {
@@ -31,19 +30,9 @@ const FloraDetails = () => {
 
   return (
     <>
-      <button onClick={() => navigate(-1)} className="btn btn-neutral flex items-center mb-6 mt-4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="currentColor"
-          className="w-5 h-5"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-        </svg>
-        Back
-      </button>
+      {/* Go back to where you came from */}
+      <Back />
+
       {flora ? (
         <div className="bg-white py-4 px-6 rounded-md shadow-md">
           <div className="text-2xl font-medium">{flora.commonName}</div>

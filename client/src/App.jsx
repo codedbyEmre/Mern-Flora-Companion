@@ -4,7 +4,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 import { ToastContainer } from 'react-toastify';
 
 // components & pages
-import Navbar from './components/Navbar';
+import Navbar from './components/layout/Navbar';
 import Home from './pages/Home';
 import FloraDetails from './components/FloraDetails';
 import Signup from './pages/Signup';
