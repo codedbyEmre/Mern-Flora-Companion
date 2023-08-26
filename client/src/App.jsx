@@ -10,6 +10,7 @@ import FloraDetails from './components/FloraDetails';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Stats from './pages/Stats';
+import NoPageFound from './pages/NoPageFound';
 
 const App = () => {
   const { user } = useAuthContext();
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/stats" element={user ? <Stats /> : <Navigate to="/login" />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+            <Route path="*" element={<NoPageFound />} />
           </Routes>
         </div>
       </BrowserRouter>
