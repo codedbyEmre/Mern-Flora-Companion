@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import FloraDetails from './components/FloraDetails';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Stats from './pages/Stats';
 
 const App = () => {
   const { user } = useAuthContext();
@@ -23,6 +24,7 @@ const App = () => {
           <Routes>
             <Route path="/details/:id" element={<FloraDetails />} />
             <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+            <Route path="/stats" element={user ? <Stats /> : <Navigate to="/login" />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
           </Routes>

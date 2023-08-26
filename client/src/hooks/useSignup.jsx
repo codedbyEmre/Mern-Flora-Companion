@@ -23,8 +23,6 @@ export const useSignup = () => {
 
     const data = await res.json();
 
-    console.log('data :>> ', data);
-
     if (res.ok) {
       localStorage.setItem('user', JSON.stringify(data));
 
