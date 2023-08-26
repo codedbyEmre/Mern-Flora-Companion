@@ -2,8 +2,7 @@
 import { useState } from 'react';
 import { useFloraContext } from '../../hooks/useFloraContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const DeleteModal = ({ id, closeModal }) => {
   const { dispatch } = useFloraContext();
@@ -37,8 +36,6 @@ const DeleteModal = ({ id, closeModal }) => {
 
   return (
     <>
-      <ToastContainer position="top-right" />
-
       <dialog id="my_modal_1" className="modal" open>
         <form method="dialog" className="modal-box">
           <h3 className="font-bold text-2xl">Delete Flora</h3>

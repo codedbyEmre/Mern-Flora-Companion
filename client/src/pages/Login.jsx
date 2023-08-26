@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../hooks/useLogin';
-import { ToastContainer } from 'react-toastify';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -18,8 +17,6 @@ const Login = () => {
 
   return (
     <>
-      <ToastContainer position="top-right" />
-
       <form onSubmit={handleSignup} className="max-w-sm mx-auto bg-white py-4 px-6 mt-6 rounded-md shadow-md">
         <h3 className="mb-8 text-2xl font-medium text-center mt-2">Log In</h3>
 

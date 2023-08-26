@@ -1,7 +1,6 @@
 // imports
 import { useState } from 'react';
 import { useSignup } from '../hooks/useSignup';
-import { ToastContainer } from 'react-toastify';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -16,58 +15,54 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <ToastContainer position="top-right" />
+    <form onSubmit={handleSignup} className="max-w-sm mx-auto bg-white py-4 px-6 mt-6 rounded-md shadow-md">
+      <h3 className="mb-8 text-2xl font-medium text-center mt-2">Sign Up</h3>
 
-      <form onSubmit={handleSignup} className="max-w-sm mx-auto bg-white py-4 px-6 mt-6 rounded-md shadow-md">
-        <h3 className="mb-8 text-2xl font-medium text-center mt-2">Sign Up</h3>
-
-        <div className="mb-6">
-          <label className="block mb-1" htmlFor="username">
-            * Username
-          </label>
-          <input
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-            className="w-full border border-slate-400 p-1 rounded"
-            type="text"
-            id="username"
-          />
-        </div>
-
-        <div className="mb-6">
-          <label className="block mb-1" htmlFor="email">
-            * Email
-          </label>
-          <input
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="w-full border border-slate-400 p-1 rounded"
-            type="email"
-            id="email"
-          />
-        </div>
-
-        <label className="block mb-1" htmlFor="password">
-          * Password
+      <div className="mb-6">
+        <label className="block mb-1" htmlFor="username">
+          * Username
         </label>
         <input
-          value={password}
-          onChange={e => setPassword(e.target.value)}
+          value={username}
+          onChange={e => setUsername(e.target.value)}
           className="w-full border border-slate-400 p-1 rounded"
-          type="password"
-          id="password"
+          type="text"
+          id="username"
         />
+      </div>
 
-        {error && <div className="text-red-600 mt-6 -mb-2">{error}</div>}
+      <div className="mb-6">
+        <label className="block mb-1" htmlFor="email">
+          * Email
+        </label>
+        <input
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          className="w-full border border-slate-400 p-1 rounded"
+          type="email"
+          id="email"
+        />
+      </div>
 
-        <div className="flex justify-end mt-8 mb-2">
-          <button disabled={isLoading} className="btn btn-neutral">
-            Signup
-          </button>
-        </div>
-      </form>
-    </>
+      <label className="block mb-1" htmlFor="password">
+        * Password
+      </label>
+      <input
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        className="w-full border border-slate-400 p-1 rounded"
+        type="password"
+        id="password"
+      />
+
+      {error && <div className="text-red-600 mt-6 -mb-2">{error}</div>}
+
+      <div className="flex justify-end mt-8 mb-2">
+        <button disabled={isLoading} className="btn btn-neutral">
+          Signup
+        </button>
+      </div>
+    </form>
   );
 };
 

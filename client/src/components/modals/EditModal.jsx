@@ -2,8 +2,7 @@
 import { useState } from 'react';
 import { useFloraContext } from '../../hooks/useFloraContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const EditModal = ({ id, closeModal, flora }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -65,8 +64,6 @@ const EditModal = ({ id, closeModal, flora }) => {
   }
   return (
     <>
-      <ToastContainer position="top-right" />
-
       <dialog id="editModal" className="modal" open>
         <form onSubmit={editFlora} method="dialog" className="modal-box">
           <h3 className="font-bold text-2xl mb-6">Edit Flora</h3>

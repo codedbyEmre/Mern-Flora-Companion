@@ -2,8 +2,7 @@
 import { useState } from 'react';
 import { useFloraContext } from '../hooks/useFloraContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const AddFlora = () => {
   const [commonName, setCommonName] = useState('');
@@ -80,8 +79,6 @@ const AddFlora = () => {
       <button className="btn btn-neutral mt-4 mb-6" onClick={() => window.addModal.showModal()}>
         Add Flora
       </button>
-
-      <ToastContainer position="top-right" />
 
       <dialog id="addModal" className="modal">
         <form onSubmit={handleAddFlora} method="dialog" className="modal-box">

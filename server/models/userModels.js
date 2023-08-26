@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
 // signup user
 userSchema.statics.signup = async function (username, email, password) {
   if (!username || !email || !password) {
-    throw Error('Username,email and password are required!');
+    throw Error('All required fields must be filled!');
   }
 
   if (!validator.isEmail(email)) {
@@ -50,7 +50,7 @@ userSchema.statics.signup = async function (username, email, password) {
 // login user
 userSchema.statics.login = async function (username, email, password) {
   if (!username || !email || !password) {
-    throw Error('Username,email and password are required!');
+    throw Error('All required fields must be filled!');
   }
 
   const user = await this.findOne({ email });

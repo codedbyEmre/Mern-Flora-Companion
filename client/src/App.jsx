@@ -1,6 +1,7 @@
 // imports
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
+import { ToastContainer } from 'react-toastify';
 
 // components & pages
 import Navbar from './components/Navbar';
@@ -14,6 +15,8 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-slate-200 overflow-hidden">
+      <ToastContainer position="top-right" />
+
       <BrowserRouter>
         <Navbar />
         <div className="max-w-6xl mx-auto p-5">
