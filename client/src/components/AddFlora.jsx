@@ -18,6 +18,7 @@ const AddFlora = () => {
   const [error, setError] = useState(null);
   const { dispatch } = useFloraContext();
   const { user } = useAuthContext();
+  const [emptyFields, setEmptyFields] = useState(null);
 
   const handleAddFlora = async e => {
     e.preventDefault();
@@ -59,19 +60,24 @@ const AddFlora = () => {
       setBloomTime('');
       setArea('');
       setError(null);
+      setEmptyFields(null);
 
       toast.success('Flora added successfully!');
 
       window.addModal.close();
     } else {
       setError(data.error);
+      setEmptyFields(data.emptyFields);
     }
   };
 
   const closeModal = () => {
-    setError(null);
-
     window.addModal.close();
+
+    setTimeout(() => {
+      setError(null);
+      setEmptyFields(null);
+    }, 300);
   };
 
   return (
@@ -90,127 +96,147 @@ const AddFlora = () => {
           <div className="grid sm:grid-cols-2 grid-cols-1 gap-6">
             <div>
               <label className="block mb-1" htmlFor="commonName">
-                Common Name
+                * Common Name
               </label>
               <input
                 value={commonName}
                 onChange={e => setCommonName(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('commonName') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="text"
                 id="commonName"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="botanicalName">
-                Botanical Name
+                * Botanical Name
               </label>
               <input
                 value={botanicalName}
                 onChange={e => setBotanicalName(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('botanicalName') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="text"
                 id="botanicalName"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="family">
-                Family
+                * Family
               </label>
               <input
                 value={family}
                 onChange={e => setFamily(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('family') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="text"
                 id="family"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="color">
-                Color
+                * Color
               </label>
               <input
                 value={color}
                 onChange={e => setColor(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('color') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="text"
                 id="color"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="area">
-                Area
+                * Area
               </label>
               <input
                 value={area}
                 onChange={e => setArea(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('area') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="text"
                 id="area"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="plantType">
-                Plant Type
+                * Plant Type
               </label>
               <input
                 value={plantType}
                 onChange={e => setPlantType(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('plantType') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="text"
                 id="plantType"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="size">
-                Size
+                * Size
               </label>
               <input
                 value={size}
                 onChange={e => setSize(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('size') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="number"
                 id="size"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="soilType">
-                Soil Type
+                * Soil Type
               </label>
               <input
                 value={soilType}
                 onChange={e => setSoilType(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('soilType') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="text"
                 id="soilType"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="soilPh">
-                Soil Ph
+                * Soil Ph
               </label>
               <input
                 value={soilPh}
                 onChange={e => setSoilPh(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('soilPh') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="number"
                 id="soilPh"
               />
             </div>
             <div>
               <label className="block mb-1" htmlFor="bloomTime">
-                Bloom Time
+                * Bloom Time
               </label>
               <input
                 value={bloomTime}
                 onChange={e => setBloomTime(e.target.value)}
-                className="w-full border border-slate-400 p-1 rounded"
+                className={`w-full border ${
+                  emptyFields?.includes('bloomTime') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
                 type="text"
                 id="bloomTime"
               />
             </div>
           </div>
 
-          {error && <div className="text-red-600">{error}</div>}
+          {error && <div className="text-red-600 mt-4">{error}</div>}
 
           <div className="modal-action mt-10">
             <button onClick={() => closeModal()} className="btn btn-outline mr-2">
