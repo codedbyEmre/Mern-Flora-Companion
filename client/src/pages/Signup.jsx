@@ -1,6 +1,7 @@
 // imports
 import { useState } from 'react';
 import { useSignup } from '../hooks/useSignup';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -54,6 +55,13 @@ const Signup = () => {
         type="password"
         id="password"
       />
+
+      <p className="mt-4 text-lg">
+        Already a member?
+        <Link to="/login" className="font-medium ml-2 underline">
+          Log in now!
+        </Link>
+      </p>
 
       {error && <div className="text-red-600 mt-6 -mb-2">{error}</div>}
 
