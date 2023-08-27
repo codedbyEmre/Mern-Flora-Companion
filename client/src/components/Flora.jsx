@@ -133,7 +133,7 @@ const Flora = ({ flora }) => {
           <span className="font-semibold">Area: </span>
           {area}
         </div>
-        <div className="capitalize mt-4">{formatDistanceToNow(new Date(createdAt), { addSuffix: true })}</div>
+        <div className="capitalize mt-4">Created {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}</div>
       </div>
 
       {/* Show edit modal */}

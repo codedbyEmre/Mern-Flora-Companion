@@ -49,20 +49,9 @@ const AddFlora = () => {
     if (res.ok) {
       dispatch({ type: 'ADD_FLORA', payload: data });
 
-      setCommonName('');
-      setBotanicalName('');
-      setFamily('');
-      setPlantType('');
-      setColor('');
-      setSize('');
-      setSoilType('');
-      setSoilPh('');
-      setBloomTime('');
-      setArea('');
-      setError(null);
-      setEmptyFields(null);
-
       toast.success('Flora added successfully!');
+
+      resetFields();
 
       window.addModal.close();
     } else {
@@ -75,9 +64,23 @@ const AddFlora = () => {
     window.addModal.close();
 
     setTimeout(() => {
-      setError(null);
-      setEmptyFields(null);
+      resetFields();
     }, 300);
+  };
+
+  const resetFields = () => {
+    setCommonName('');
+    setBotanicalName('');
+    setFamily('');
+    setPlantType('');
+    setColor('');
+    setSize('');
+    setSoilType('');
+    setSoilPh('');
+    setBloomTime('');
+    setArea('');
+    setError(null);
+    setEmptyFields(null);
   };
 
   return (

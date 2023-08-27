@@ -38,6 +38,9 @@ const DeleteModal = ({ id, closeModal }) => {
     <>
       <dialog id="my_modal_1" className="modal" open>
         <form method="dialog" className="modal-box">
+          <button onClick={() => handleCloseModal()} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            ✕
+          </button>
           <h3 className="font-bold text-2xl">Delete Flora</h3>
           <p className="py-4 text-lg">Are you sure you want to delete this flora?</p>
           <div className="modal-action">

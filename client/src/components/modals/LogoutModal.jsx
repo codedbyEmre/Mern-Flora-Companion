@@ -25,6 +25,9 @@ const LogoutModal = ({ closeModal }) => {
     <>
       <dialog id="my_modal_1" className="modal" open>
         <form method="dialog" className="modal-box">
+          <button onClick={() => handleCloseModal()} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            ✕
+          </button>
           <h3 className="font-bold text-2xl">Log Out</h3>
           <p className="py-4 text-lg">Are you sure you want to log out?</p>
           <div className="modal-action">
