@@ -16,8 +16,7 @@ Vite
 Express Js
 MongoDb
 Node Js
-Tailwind
-JWT
+JsonWebToken
 ```
 
 ## Project Setup
