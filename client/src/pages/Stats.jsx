@@ -5,39 +5,32 @@ import { useFloraContext } from '../hooks/useFloraContext';
 const Stats = () => {
   const { floras } = useFloraContext();
 
-  const families = {
-    amount: floras.filter(flora => flora.family).length,
-    names: floras.map(flora => flora.family).join(', ')
+  const getUniquePropertyStats = property => {
+    const uniqueValuesSet = new Set();
+    const filteredFloras = floras.filter(flora => flora[property]);
+
+    const amount = filteredFloras.reduce((count, flora) => {
+      if (!uniqueValuesSet.has(flora[property])) {
+        uniqueValuesSet.add(flora[property]);
+        return count + 1;
+      }
+      return count;
+    }, 0);
+
+    const names = [...uniqueValuesSet].join(', ');
+
+    return { amount, names };
   };
 
-  const colors = {
-    amount: floras.filter(flora => flora.color).length,
-    names: floras.map(flora => flora.color).join(', ')
-  };
-
-  const areas = {
-    amount: floras.filter(flora => flora.area).length,
-    names: floras.map(flora => flora.area).join(', ')
-  };
-
-  const plantTypes = {
-    amount: floras.filter(flora => flora.plantType).length,
-    names: floras.map(flora => flora.plantType).join(', ')
-  };
+  const families = getUniquePropertyStats('family');
+  const colors = getUniquePropertyStats('color');
+  const areas = getUniquePropertyStats('area');
+  const plantTypes = getUniquePropertyStats('plantType');
+  const soilTypes = getUniquePropertyStats('soilType');
+  const bloomTimes = getUniquePropertyStats('bloomTime');
 
   const avgSize = floras.map(flora => flora.size).reduce((sum, i) => sum + i, 0) / floras.length;
-
-  const soilTypes = {
-    amount: floras.filter(flora => flora.soilType).length,
-    names: floras.map(flora => flora.soilType).join(', ')
-  };
-
   const avgSoilPh = floras.map(flora => flora.soilPh).reduce((sum, i) => sum + i, 0) / floras.length;
-
-  const bloomTimes = {
-    amount: floras.filter(flora => flora.bloomTime).length,
-    names: floras.map(flora => flora.bloomTime).join(', ')
-  };
 
   return (
     <>
