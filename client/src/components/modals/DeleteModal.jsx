@@ -20,6 +20,7 @@ const DeleteModal = ({ id, closeModal }) => {
 
     if (res.ok) {
       dispatch({ type: 'DELETE_FLORA', payload: data });
+      closeModal();
 
       toast.success('Flora deleted successfully!');
     }

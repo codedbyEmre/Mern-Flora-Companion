@@ -9,6 +9,9 @@ const LogoutModal = ({ closeModal }) => {
 
   const handleLogout = async () => {
     await logout();
+
+    closeModal();
+
     toast.success('Logged out successfully!');
   };
 

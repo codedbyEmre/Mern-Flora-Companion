@@ -54,6 +54,7 @@ const EditModal = ({ id, closeModal, flora }) => {
 
       setError(null);
       setEmptyFields(null);
+      closeModal();
 
       toast.success('Flora edited successfully!');
     } else {
