@@ -25,7 +25,7 @@ const AddFlora = () => {
 
     setError(null);
 
-    const res = await fetch('http://localhost:3000/api/floras', {
+    const res = await fetch('https://mern-flora-companion-api.vercel.app/api/floras', {
       method: 'POST',
       body: JSON.stringify({
         commonName,

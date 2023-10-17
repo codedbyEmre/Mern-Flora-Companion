@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     const getFloras = async () => {
-      const res = await fetch('http://localhost:3000/api/floras', {
+      const res = await fetch('https://mern-flora-companion-api.vercel.app/api/floras', {
         headers: {
           Authorization: `Bearer ${user.token}`
         }

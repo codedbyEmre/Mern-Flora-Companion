@@ -25,7 +25,7 @@ const EditModal = ({ id, closeModal, flora }) => {
   const editFlora = async e => {
     e.preventDefault();
 
-    const res = await fetch(`http://localhost:3000/api/floras/${id}`, {
+    const res = await fetch(`https://mern-flora-companion-api.vercel.app/api/floras/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         commonName: editedCommonName,

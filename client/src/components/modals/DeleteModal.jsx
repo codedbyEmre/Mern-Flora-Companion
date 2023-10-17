@@ -10,7 +10,7 @@ const DeleteModal = ({ id, closeModal }) => {
   const { user } = useAuthContext();
 
   const deleteFlora = async () => {
-    const res = await fetch(`http://localhost:3000/api/floras/${id}`, {
+    const res = await fetch(`https://mern-flora-companion-api.vercel.app/api/floras/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${user.token}`
