@@ -13,7 +13,7 @@ export const useLogin = () => {
     setIsLoading(false);
     setError(null);
 
-    const res = await fetch('http://localhost:3000/api/user/login', {
+    const res = await fetch('https://mern-flora-companion-api.vercel.app/api/user/login', {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
       headers: {
