@@ -47,12 +47,12 @@ npm run build
 npm install
 ```
 
-### For this project, you will need a .env file that contains following fields;
+After that create an `.env` file in the server folder with the following entries:
 
 ```
-PORT
-MONGO_URI
-SECRET
+PORT=your port number
+MONGO_URI=your mongo db connection string
+SECRET=your secret string for jsonWebToken
 ```
 
 ### Compile and Hot-Reload for Development
