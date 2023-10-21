@@ -37,7 +37,7 @@ const Stats = () => {
       {/* Go back to where you came from */}
       <Back />
 
-      <ul className="bg-white py-4 px-6 rounded-md shadow-md">
+      <ul className="bg-white py-4 px-6 rounded-md shadow-md break-words">
         <p className="text-2xl font-semibold mb-4">Statistics</p>
         <li className="mb-2 text-lg">
           Total floras: <span className="font-semibold ml-2">{floras.length}</span>
