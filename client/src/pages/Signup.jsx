@@ -7,12 +7,23 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { signup, isLoading, error } = useSignup();
+  const [btnLoading, setBtnLoading] = useState(false);
+  const { signup, error } = useSignup();
 
   const handleSignup = async e => {
     e.preventDefault();
+    setBtnLoading(true);
 
-    await signup(username, email, password);
+    try {
+      const res = await signup(username, email, password);
+
+      if (!res.ok) {
+        throw new Error();
+      }
+    } catch (error) {
+    } finally {
+      setBtnLoading(false);
+    }
   };
 
   return (
@@ -66,9 +77,14 @@ const Signup = () => {
       {error && <div className="text-red-600 mt-6 -mb-2">{error}</div>}
 
       <div className="flex justify-end mt-8 mb-2">
-        <button disabled={isLoading} className="btn btn-neutral">
-          Signup
-        </button>
+        {btnLoading ? (
+          <button className="btn btn-neutral capitalize text-base">
+            <span className="loading loading-spinner"></span>
+            loading
+          </button>
+        ) : (
+          <button className="btn btn-neutral capitalize text-base">Signup</button>
+        )}
       </div>
     </form>
   );

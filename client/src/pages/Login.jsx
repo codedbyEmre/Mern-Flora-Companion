@@ -7,17 +7,28 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, isLoading, error } = useLogin();
+  const [btnLoading, setBtnLoading] = useState(false);
+  const { login, error } = useLogin();
 
-  const handleSignup = async e => {
+  const handleLogin = async e => {
     e.preventDefault();
+    setBtnLoading(true);
 
-    await login(username, email, password);
+    try {
+      const res = await login(username, email, password);
+
+      if (!res.ok) {
+        throw new Error();
+      }
+    } catch (error) {
+    } finally {
+      setBtnLoading(false);
+    }
   };
 
   return (
     <>
-      <form onSubmit={handleSignup} className="max-w-sm mx-auto bg-white py-4 px-6 mt-6 rounded-md shadow-md">
+      <form onSubmit={handleLogin} className="max-w-sm mx-auto bg-white py-4 px-6 mt-6 rounded-md shadow-md">
         <h3 className="mb-8 text-2xl font-medium text-center mt-2">Log In</h3>
 
         <div className="mb-6">
@@ -67,9 +78,14 @@ const Login = () => {
         {error && <div className="text-red-600 mt-4 -mb-2">{error}</div>}
 
         <div className="flex justify-end mt-8 mb-2">
-          <button disabled={isLoading} className="btn btn-neutral">
-            Login
-          </button>
+          {btnLoading ? (
+            <button className="btn btn-neutral capitalize text-base">
+              <span className="loading loading-spinner"></span>
+              loading
+            </button>
+          ) : (
+            <button className="btn btn-neutral capitalize text-base">Login</button>
+          )}
         </div>
       </form>
     </>
