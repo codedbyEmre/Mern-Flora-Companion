@@ -34,12 +34,12 @@ const FloraDetails = () => {
       <Back />
 
       {flora ? (
-        <div className="bg-white py-4 px-6 rounded-md shadow-md">
+        <div className="bg-white py-4 px-6 rounded-md shadow-md break-words">
           <div className="text-2xl font-medium">{flora.commonName}</div>
           <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 my-6">
-            <div>
+            <div className="flex">
               <span className="font-semibold">Botanical Name: </span>
-              {flora.botanicalName}
+              <span>{flora.botanicalName}</span>
             </div>
             <div>
               <span className="font-semibold">Family: </span>

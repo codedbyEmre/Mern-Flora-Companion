@@ -32,7 +32,7 @@ const Home = () => {
       <AddFlora />
 
       {floras ? (
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
           {floras.map((flora, index) => (
             <Flora key={flora._id} flora={flora} index={index} />
           ))}

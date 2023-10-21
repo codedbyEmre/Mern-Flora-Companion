@@ -28,9 +28,9 @@ const Flora = ({ flora }) => {
 
   return (
     <>
-      <div className="bg-white py-4 px-6 rounded-md shadow-md">
+      <div className="bg-white py-4 px-6 rounded-md shadow-md break-words">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-medium mb-3">{commonName}</div>
+          <div className="text-2xl font-medium mb-3 line-clamp-1">{commonName}</div>
 
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -121,19 +121,21 @@ const Flora = ({ flora }) => {
           </div>
         </div>
 
-        <div className="my-2">
-          <span className="font-semibold">Family: </span>
-          {family}
+        <div className="my-2 flex">
+          <span className="font-semibold mr-1">Family: </span>
+          <span className="line-clamp-1">{family}</span>
         </div>
-        <div className="my-2">
-          <span className="font-semibold">Color: </span>
-          {color}
+        <div className="my-2 flex">
+          <span className="font-semibold mr-1">Color: </span>
+          <span className="line-clamp-1">{color}</span>
         </div>
-        <div className="my-2">
-          <span className="font-semibold">Area: </span>
-          {area}
+        <div className="my-2 flex">
+          <span className="font-semibold mr-1">Area: </span>
+          <span className="line-clamp-1">{area}</span>
         </div>
-        <div className="capitalize mt-4">Created {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}</div>
+        <div className="capitalize mt-4 line-clamp-1">
+          Created {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
+        </div>
       </div>
 
       {/* Show edit modal */}
