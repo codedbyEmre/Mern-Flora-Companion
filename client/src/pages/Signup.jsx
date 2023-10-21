@@ -83,14 +83,16 @@ const Signup = () => {
           {error && <div className="text-red-600 mt-3 -mb-2">{error}</div>}
 
           <div className="flex justify-end mt-8 mb-2">
-            {btnLoading ? (
-              <button className="btn btn-neutral capitalize text-base">
-                <span className="loading loading-spinner"></span>
-                loading
-              </button>
-            ) : (
-              <button className="btn btn-neutral capitalize text-base">Signup</button>
-            )}
+            <button className="btn btn-neutral capitalize text-base">
+              {btnLoading ? (
+                <>
+                  <span className="loading loading-spinner"></span>
+                  loading
+                </>
+              ) : (
+                'signup'
+              )}
+            </button>
           </div>
         </form>
       </div>
