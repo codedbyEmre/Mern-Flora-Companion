@@ -30,7 +30,7 @@ const Signup = () => {
   return (
     <div className="mt-6 max-w-2xl mx-auto flex rounded-lg shadow-md overflow-hidden min-h-[50vh]">
       <div className="login-img flex-1 xs:block hidden">
-        <img src={signupImg} className="h-full w-full object-cover" alt="login img" />
+        <img src={signupImg} loading="lazy" className="h-full w-full object-cover" alt="login img" />
       </div>
       <div className="flex-1">
         <form onSubmit={handleSignup} className="h-full bg-white py-4 px-6 ">

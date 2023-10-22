@@ -32,7 +32,7 @@ const Flora = ({ flora }) => {
         <div className="flex items-center justify-between">
           <div className="text-2xl font-medium mb-3 line-clamp-1">{commonName}</div>
 
-          <div className="dropdown">
+          <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
