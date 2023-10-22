@@ -4,6 +4,8 @@ import { useFloraContext } from '../../hooks/useFloraContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { toast } from 'react-toastify';
 
+const bloomTimes = ['Winter', 'Spring', 'Summer', 'Autumn'];
+
 const EditModal = ({ id, closeModal, flora }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const { commonName, botanicalName, family, color, area, plantType, size, soilType, soilPh, bloomTime } = flora;
@@ -212,15 +214,19 @@ const EditModal = ({ id, closeModal, flora }) => {
               <label className="block mb-1" htmlFor="bloomTime">
                 * Bloom Time
               </label>
-              <input
+              <select
                 value={editedBloomTime}
                 onChange={e => setEditedBloomTime(e.target.value)}
-                className={`w-full border ${
-                  emptyFields?.includes('bloomTime') ? 'border-red-400' : 'border-slate-400'
-                }  p-1 rounded`}
-                type="text"
                 id="bloomTime"
-              />
+                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+              >
+                {bloomTimes &&
+                  bloomTimes.map((bloomTime, index) => (
+                    <option value={bloomTime} key={index}>
+                      {bloomTime}
+                    </option>
+                  ))}
+              </select>
             </div>
           </div>
 
