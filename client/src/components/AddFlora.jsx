@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { useFloraContext } from '../hooks/useFloraContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { toast } from 'react-toastify';
+import { floraArrays } from './../modules/floraArrays.js';
 
-const bloomTimes = ['Winter', 'Spring', 'Summer', 'Autumn'];
+const { plantFamilies, plantTypes, plantColors, plantAreas, soilTypes, bloomTimes } = floraArrays();
 
 const AddFlora = () => {
   const [commonName, setCommonName] = useState('');
@@ -27,20 +28,22 @@ const AddFlora = () => {
 
     setError(null);
 
+    const flora = {
+      commonName,
+      botanicalName,
+      family,
+      plantType,
+      color,
+      size,
+      soilType,
+      soilPh,
+      bloomTime,
+      area
+    };
+
     const res = await fetch('https://mern-flora-companion-api.vercel.app/api/floras', {
       method: 'POST',
-      body: JSON.stringify({
-        commonName,
-        botanicalName,
-        family,
-        plantType,
-        color,
-        size,
-        soilType,
-        soilPh,
-        bloomTime,
-        area
-      }),
+      body: JSON.stringify(flora),
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${user.token}`
@@ -131,57 +134,73 @@ const AddFlora = () => {
               <label className="block mb-1" htmlFor="family">
                 * Family
               </label>
-              <input
+              <select
                 value={family}
                 onChange={e => setFamily(e.target.value)}
-                className={`w-full border ${
-                  emptyFields?.includes('family') ? 'border-red-400' : 'border-slate-400'
-                }  p-1 rounded`}
-                type="text"
                 id="family"
-              />
+                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+              >
+                {plantFamilies &&
+                  plantFamilies.map((plantFamily, index) => (
+                    <option value={plantFamily} key={index}>
+                      {plantFamily}
+                    </option>
+                  ))}
+              </select>
             </div>
             <div>
               <label className="block mb-1" htmlFor="color">
                 * Color
               </label>
-              <input
+              <select
                 value={color}
                 onChange={e => setColor(e.target.value)}
-                className={`w-full border ${
-                  emptyFields?.includes('color') ? 'border-red-400' : 'border-slate-400'
-                }  p-1 rounded`}
-                type="text"
                 id="color"
-              />
+                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+              >
+                {plantColors &&
+                  plantColors.map((plantColor, index) => (
+                    <option value={plantColor} key={index}>
+                      {plantColor}
+                    </option>
+                  ))}
+              </select>
             </div>
             <div>
               <label className="block mb-1" htmlFor="area">
                 * Area
               </label>
-              <input
+              <select
                 value={area}
                 onChange={e => setArea(e.target.value)}
-                className={`w-full border ${
-                  emptyFields?.includes('area') ? 'border-red-400' : 'border-slate-400'
-                }  p-1 rounded`}
-                type="text"
                 id="area"
-              />
+                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+              >
+                {plantAreas &&
+                  plantAreas.map((plantArea, index) => (
+                    <option value={plantArea} key={index}>
+                      {plantArea}
+                    </option>
+                  ))}
+              </select>
             </div>
             <div>
               <label className="block mb-1" htmlFor="plantType">
                 * Plant Type
               </label>
-              <input
+              <select
                 value={plantType}
                 onChange={e => setPlantType(e.target.value)}
-                className={`w-full border ${
-                  emptyFields?.includes('plantType') ? 'border-red-400' : 'border-slate-400'
-                }  p-1 rounded`}
-                type="text"
                 id="plantType"
-              />
+                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+              >
+                {plantTypes &&
+                  plantTypes.map((plantType, index) => (
+                    <option value={plantType} key={index}>
+                      {plantType}
+                    </option>
+                  ))}
+              </select>
             </div>
             <div>
               <label className="block mb-1" htmlFor="size">
@@ -201,15 +220,19 @@ const AddFlora = () => {
               <label className="block mb-1" htmlFor="soilType">
                 * Soil Type
               </label>
-              <input
+              <select
                 value={soilType}
                 onChange={e => setSoilType(e.target.value)}
-                className={`w-full border ${
-                  emptyFields?.includes('soilType') ? 'border-red-400' : 'border-slate-400'
-                }  p-1 rounded`}
-                type="text"
                 id="soilType"
-              />
+                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+              >
+                {soilTypes &&
+                  soilTypes.map((soilType, index) => (
+                    <option value={soilType} key={index}>
+                      {soilType}
+                    </option>
+                  ))}
+              </select>
             </div>
             <div>
               <label className="block mb-1" htmlFor="soilPh">
