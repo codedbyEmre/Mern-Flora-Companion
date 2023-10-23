@@ -125,6 +125,9 @@ const EditModal = ({ id, closeModal, flora }) => {
                 id="family"
                 className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
               >
+                <option value="" disabled>
+                  Select a family
+                </option>
                 {plantFamilies &&
                   plantFamilies.map((plantFamily, index) => (
                     <option value={plantFamily} key={index}>
@@ -143,6 +146,9 @@ const EditModal = ({ id, closeModal, flora }) => {
                 id="color"
                 className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
               >
+                <option value="" disabled>
+                  Select a color
+                </option>
                 {plantColors &&
                   plantColors.map((plantColor, index) => (
                     <option value={plantColor} key={index}>
@@ -161,6 +167,9 @@ const EditModal = ({ id, closeModal, flora }) => {
                 id="area"
                 className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
               >
+                <option value="" disabled>
+                  Select an area
+                </option>
                 {plantAreas &&
                   plantAreas.map((plantArea, index) => (
                     <option value={plantArea} key={index}>
@@ -179,6 +188,9 @@ const EditModal = ({ id, closeModal, flora }) => {
                 id="plantType"
                 className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
               >
+                <option value="" disabled>
+                  Select a plant type
+                </option>
                 {plantTypes &&
                   plantTypes.map((plantType, index) => (
                     <option value={plantType} key={index}>
@@ -211,6 +223,9 @@ const EditModal = ({ id, closeModal, flora }) => {
                 id="soilType"
                 className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
               >
+                <option value="" disabled>
+                  Select a soil type
+                </option>
                 {soilTypes &&
                   soilTypes.map((soilType, index) => (
                     <option value={soilType} key={index}>
@@ -243,6 +258,9 @@ const EditModal = ({ id, closeModal, flora }) => {
                 id="bloomTime"
                 className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
               >
+                <option value="" disabled>
+                  Select a bloom time
+                </option>
                 {bloomTimes &&
                   bloomTimes.map((bloomTime, index) => (
                     <option value={bloomTime} key={index}>

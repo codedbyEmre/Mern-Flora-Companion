@@ -138,8 +138,11 @@ const AddFlora = () => {
                 value={family}
                 onChange={e => setFamily(e.target.value)}
                 id="family"
-                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+                className={`w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer ${
+                  emptyFields?.includes('family') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
               >
+                <option value="">Select a family</option>
                 {plantFamilies &&
                   plantFamilies.map((plantFamily, index) => (
                     <option value={plantFamily} key={index}>
@@ -156,8 +159,11 @@ const AddFlora = () => {
                 value={color}
                 onChange={e => setColor(e.target.value)}
                 id="color"
-                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+                className={`w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer ${
+                  emptyFields?.includes('color') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
               >
+                <option value="">Select a color</option>
                 {plantColors &&
                   plantColors.map((plantColor, index) => (
                     <option value={plantColor} key={index}>
@@ -174,8 +180,11 @@ const AddFlora = () => {
                 value={area}
                 onChange={e => setArea(e.target.value)}
                 id="area"
-                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+                className={`w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer ${
+                  emptyFields?.includes('area') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
               >
+                <option value="">Select an area</option>
                 {plantAreas &&
                   plantAreas.map((plantArea, index) => (
                     <option value={plantArea} key={index}>
@@ -192,8 +201,11 @@ const AddFlora = () => {
                 value={plantType}
                 onChange={e => setPlantType(e.target.value)}
                 id="plantType"
-                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+                className={`w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer ${
+                  emptyFields?.includes('plantType') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
               >
+                <option value="">Select a plant type</option>
                 {plantTypes &&
                   plantTypes.map((plantType, index) => (
                     <option value={plantType} key={index}>
@@ -224,8 +236,11 @@ const AddFlora = () => {
                 value={soilType}
                 onChange={e => setSoilType(e.target.value)}
                 id="soilType"
-                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+                className={`w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer ${
+                  emptyFields?.includes('soilType') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
               >
+                <option value="">Select a soil type</option>
                 {soilTypes &&
                   soilTypes.map((soilType, index) => (
                     <option value={soilType} key={index}>
@@ -256,8 +271,11 @@ const AddFlora = () => {
                 value={bloomTime}
                 onChange={e => setBloomTime(e.target.value)}
                 id="bloomTime"
-                className="w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer"
+                className={`w-full p-[0.4rem] bg-white border border-[#94a3b8] rounded cursor-pointer ${
+                  emptyFields?.includes('bloomTime') ? 'border-red-400' : 'border-slate-400'
+                }  p-1 rounded`}
               >
+                <option value="">Select a bloom time</option>
                 {bloomTimes &&
                   bloomTimes.map((bloomTime, index) => (
                     <option value={bloomTime} key={index}>
