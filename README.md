@@ -5,6 +5,7 @@
 ```
 React 18
 React Router 6
+Context Api
 Tailwind
 Daisy UI
 Vite
@@ -76,6 +77,10 @@ npm run start
 ![7](https://github.com/codedbyEmre/Mern-Flora-Companion/assets/67799995/6abd570d-95a2-454a-9572-acda97bbb5ca)
 
 ![8](https://github.com/codedbyEmre/Mern-Flora-Companion/assets/67799995/93802242-8b70-4c63-bc74-98a6dd327ec8)
+
+## Contributions
+
+Feel free to make contributions! Just create a fresh branch, implement your modifications, and send a pull request.
 
 ## License
 
