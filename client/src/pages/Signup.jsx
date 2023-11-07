@@ -46,6 +46,7 @@ const Signup = () => {
               className="w-full border border-slate-400 p-1 rounded"
               type="text"
               id="username"
+              required
             />
           </div>
 
@@ -59,6 +60,7 @@ const Signup = () => {
               className="w-full border border-slate-400 p-1 rounded"
               type="email"
               id="email"
+              required
             />
           </div>
 
@@ -71,6 +73,7 @@ const Signup = () => {
             className="w-full border border-slate-400 p-1 rounded"
             type="password"
             id="password"
+            required
           />
 
           <p className="mt-4 text-lg">
